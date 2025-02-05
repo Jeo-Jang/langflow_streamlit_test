@@ -156,6 +156,16 @@ st.title("Langflow Streamlit Tester")
 # Create a text input box for the user's message
 user_message = st.text_input("Enter your message:")
 
+# Create text input selection and boxes for the pormpts
+language_selection = st.selectbox(
+    "Which language should the agent use?",
+    ("English", "German", "French"),
+    placeholder="Select post language...",
+)
+
+tone_selection = st.text_input("Enter the tone of the post:")
+
+
 # If you want to allow file upload as well, you can use st.file_uploader (optional)
 # uploaded_file = st.file_uploader("Upload a file", type=["txt", "csv", "json"])
 
@@ -163,6 +173,8 @@ if st.button("Submit"):
     if user_message:
         # Update the tweak for the chat input with the user's message
         TWEAKS["ChatInput-42AnZ"]["input_value"] = user_message
+        TWEAKS["TextInput-VwfPT"]["input_value"] = language_selection
+        TWEAKS["TextInput-M08d0"]["input_value"] = tone_selection
 
         # Optionally, if you support file uploads via langflow's upload_file function,
         # you can add logic here to update the tweaks accordingly.
