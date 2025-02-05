@@ -17,17 +17,18 @@ except ImportError:
 # Load environment variables
 #load_dotenv()
 
+# I need to have this to make an API call via Hugginface Space
 API_KEY = st.secrets["HF_API_KEY"] #os.getenv("HF_API_KEY") 
 
 # Define your API and flow settings
 BASE_API_URL = "https://jeo-jang-langflownew.hf.space"
-FLOW_ID = "ea36bda2-6cde-4d57-be90-59d2688dd090"
+FLOW_ID = FLOW_ID = "c8940c66-6184-45e0-ad70-d4ec8b64eccf" #"ea36bda2-6cde-4d57-be90-59d2688dd090" was lost due to rebuild app.
 ENDPOINT = ""  # Set to empty string if not using a specific endpoint
 
 # Define your tweaks dictionary. Notice that we set the user input to an empty string.
-# Later, we update it with the value from the text input.
+# Later, we update it with the value from the text input. Please see below with TWEAKS[blah blah][blah blah]
 TWEAKS = {
-    "ChatInput-42AnZ": {
+    "ChatInput-8zFTw": {
         "background_color": "",
         "chat_icon": "",
         "files": "",
@@ -38,10 +39,10 @@ TWEAKS = {
         "should_store_message": True,
         "text_color": ""
     },
-    "TextInput-EsOVI": {
+    "TextInput-Q7ye5": {
         "input_value": "- Thread must be 5-7 tweets long - Each tweet should be self-contained but flow naturally to the next - Include relevant technical details while keeping language accessible - Use emojis sparingly but effectively - Include a clear call-to-action in the final tweet - Highlight key benefits and innovative aspects - Maintain professional but engaging tone"
     },
-    "ChatOutput-HN2rr": {
+    "ChatOutput-wTQTP": {
         "background_color": "",
         "chat_icon": "",
         "data_template": "{text}",
@@ -52,22 +53,22 @@ TWEAKS = {
         "should_store_message": True,
         "text_color": ""
     },
-    "TextInput-TZqIi": {
+    "TextInput-BQHnI": {
         "input_value": "thread"
     },
-    "TextInput-VwfPT": {
+    "TextInput-X18Sl": {
         "input_value": "English"
     },
-    "TextInput-NvaNj": {
+    "TextInput-VJ8Zw": {
         "input_value": "- Tech startup focused on Vegan food"
     },
-    "TextInput-M08d0": {
+    "TextInput-DnWUD": {
         "input_value": "- Professional yet approachable - annoyed and negative"
     },
-    "TextInput-T8lLh": {
+    "TextInput-8FJGR": {
         "input_value": "Vegan product Company"
     },
-    "Prompt-w2h0b": {
+    "Prompt-rZryL": {
         "CONTENT_GUIDELINES": "",
         "OUTPUT_FORMAT": "",
         "OUTPUT_LANGUAGE": "",
@@ -111,7 +112,7 @@ TWEAKS = {
         ),
         "tool_placeholder": ""
     },
-    "OpenAIModel-RKGnX": {
+    "OpenAIModel-W0BHu": {
         "api_key": {
             "load_from_db": False,
             "value": st.secrets["OPENAI_API_KEY"] #os.getenv("OPENAI_API_KEY")
@@ -172,9 +173,9 @@ tone_selection = st.text_input("Enter the tone of the post:")
 if st.button("Submit"):
     if user_message:
         # Update the tweak for the chat input with the user's message
-        TWEAKS["ChatInput-42AnZ"]["input_value"] = user_message
-        TWEAKS["TextInput-VwfPT"]["input_value"] = language_selection
-        TWEAKS["TextInput-M08d0"]["input_value"] = tone_selection
+        TWEAKS["ChatInput-8zFTw"]["input_value"] = user_message
+        TWEAKS["TextInput-X18Sl"]["input_value"] = language_selection
+        TWEAKS["TextInput-DnWUD"]["input_value"] = tone_selection
 
         # Optionally, if you support file uploads via langflow's upload_file function,
         # you can add logic here to update the tweaks accordingly.
